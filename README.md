@@ -1,1 +1,0 @@
-Changed to Editorial theme by HTML5UP, needs a lot of work to make it look nice.
