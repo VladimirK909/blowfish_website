@@ -23,10 +23,12 @@ jobs:
 
       - name: Setup Hugo
         run: |
-          curl -L -o /tmp/hugo.tar.gz 'https://github.com/gohugoio/hugo/releases/download/v0.110.0/hugo_extended_0.133.0_linux-amd64.tar.gz'
+          curl -L -o /tmp/hugo.tar.gz 'https://github.com/gohugoio/hugo/releases/download/v0.133.0/hugo_extended_0.133.0_linux-amd64.tar.gz'
           tar -C ${RUNNER_TEMP} -zxvf /tmp/hugo.tar.gz hugo
+
       - name: Build
-        run: ${RUNNER_TEMP}/hugo
+        run: |
+          ${RUNNER_TEMP}/hugo || { echo 'Hugo build failed'; exit 1; }
 
       - name: Deploy
         if: github.ref == 'refs/heads/main'
@@ -37,4 +39,4 @@ jobs:
           git config user.name 'VladimirK909'
           git config user.email 'vladimirkitanovski909@gmail.com'
           git commit -m 'Updated site'
-          git push
+          git push || { echo 'Git push failed'; exit 1; }
