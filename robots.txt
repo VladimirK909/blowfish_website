@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: vladimirkitanovski.com/sitemap.xml
+Sitemap: https://vladimirk909.github.io/blowfish_website/sitemap.xml
